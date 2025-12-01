@@ -1,0 +1,119 @@
+body {
+  font-family: 'Inter', sans-serif;
+}
+.border-runner {
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  overflow: hidden;
+}
+
+/* BOTH MOVING LINES */
+.border-runner::before,
+.border-runner::after {
+  content: "";
+  position: absolute;
+  background: #facc15;
+  box-shadow: 0 0 10px rgba(250, 204, 21, 0.9);
+  animation: squareRace 3.5s linear infinite; /* ✅ same speed everywhere */
+}
+
+/* TOP START */
+.border-runner::before {
+  width: 40px;
+  height: 3px;
+  top: 0;
+  left: -40px;
+}
+
+/* BOTTOM END START */
+.border-runner::after {
+  width: 40px;
+  height: 3px;
+  bottom: 0;
+  right: -40px;
+  animation-delay: 1.75s; /* exactly opposite side */
+}
+
+/* ✅ TRUE SQUARE CLOCKWISE PATH */
+@keyframes squareRace {
+  0% {
+    top: 0;
+    left: -40px;
+    width: 40px;
+    height: 3px;
+  }
+
+  24.9% {
+    top: 0;
+    left: 100%;
+    width: 40px;
+    height: 3px;
+  }
+
+  25% {
+    top: 0;
+    left: 100%;
+    width: 3px;
+    height: 40px;
+  }
+
+  49.9% {
+    top: 100%;
+    left: 100%;
+    width: 3px;
+    height: 40px;
+  }
+
+  50% {
+    top: 100%;
+    left: 100%;
+    width: 40px;
+    height: 3px;
+  }
+
+  74.9% {
+    top: 100%;
+    left: -40px;
+    width: 40px;
+    height: 3px;
+  }
+
+  75% {
+    top: 100%;
+    left: -40px;
+    width: 3px;
+    height: 40px;
+  }
+
+  100% {
+    top: 0;
+    left: -40px;
+    width: 3px;
+    height: 40px;
+  }
+}
+
+.animated-heading-border .border-rect {
+  fill: transparent;
+  stroke: rgba(177, 197, 0, 0.8);
+  stroke-width: 2;
+  stroke-linecap: round;
+
+  /* One visible segment + big gap → repeated → looks like 2 opposite lines */
+  stroke-dasharray: 80 294;
+  stroke-dashoffset: 0;
+  animation: topSellingBorderLoop 4s linear infinite;
+}
+
+@keyframes topSellingBorderLoop {
+  0% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    /* perimeter ≈ 748, this moves the dashes all the way around clockwise */
+    stroke-dashoffset: -748;
+  }
+}
+
+
+
