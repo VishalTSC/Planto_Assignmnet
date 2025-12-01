@@ -21,17 +21,13 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
     />
 
-    <!-- Tailwind CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- <link rel="stylesheet" href="./index.css"></link> -->
 
     <style>
       body {
         font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
           "Segoe UI", sans-serif;
       }
-
-      /* ✅ TRUE SQUARE CLOCKWISE PATH */
 
       .animated-heading-border .border-rect {
         fill: transparent;
@@ -57,7 +53,6 @@
       .clip-card {
         width: auto;
         height: auto;
-        /* background: linear-gradient(135deg, #ff512f, #dd2476); */
 
         clip-path: polygon(
           0% 0%,
@@ -101,20 +96,18 @@
       #slide4:checked ~ .carousel-wrapper #carousel-track {
         transform: translateX(-300%);
       }
-
-      
-      
     </style>
   </head>
-  <body class="bg-black">
+  <body>
     <!-- NAVBAR -->
-    <!-- <header class="h-[80px] w-full bg-[#1b2316] text-slate-100 px-6"> -->
     <header
       class="fixed top-0 left-0 z-50 h-[80px] w-full bg-[#1b2316] text-slate-100 px-6"
     >
       <nav
         class="mx-auto flex h-full max-w-full items-center justify-between px-8"
       >
+        <input type="checkbox" id="menuToggle" class="peer hidden" />
+
         <!-- LEFT: Logo + Brand -->
         <div class="flex items-center gap-2">
           <!-- Logo box -->
@@ -203,21 +196,34 @@
           </div>
 
           <!-- Hamburger (mobile + desktop) -->
-          <button
-            class="relative flex h-6 w-7 items-center justify-center text-slate-200 transition hover:text-white md:w-8"
+          <label
+            for="menuToggle"
+            class="relative flex h-6 w-7 cursor-pointer items-center justify-center text-slate-200 transition hover:text-white md:w-8 md:hidden"
             aria-label="Menu"
-            type="button"
           >
-            <!-- two-line icon: top longer, bottom shorter -->
+            <!-- top line -->
             <span
-              class="absolute top-[8px] block h-[1.5px] w-[18px] bg-current md:w-[20px]"
+              class="absolute top-[8px] block h-[1.5px] w-[18px] bg-current transition-all duration-300 peer-checked:top-[12px] peer-checked:rotate-45 md:w-[20px]"
             ></span>
+
+            <!-- bottom line -->
             <span
-              class="absolute bottom-[8px] block h-[1.5px] w-[12px] right-0 mr-1.5 bg-current md:w-[12px]"
+              class="absolute bottom-[8px] right-0 mr-1.5 block h-[1.5px] w-[12px] bg-current transition-all duration-300 peer-checked:bottom-[12px] peer-checked:-rotate-45 peer-checked:w-[18px] md:w-[12px]"
             ></span>
-          </button>
+          </label>
         </div>
       </nav>
+
+      <div
+        class="fixed left-0 top-[80px] z-40 w-full bg-[#1b2316] text-white p-6 translate-y-[-120%] transition-transform duration-300 peer-checked:translate-y-0 md:hidden"
+      >
+        <ul class="flex flex-col gap-4 text-sm font-medium">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Plants Type</a></li>
+          <li><a href="#">More</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
     </header>
 
     <section
@@ -336,7 +342,6 @@
         </p>
       </div>
 
-      <!-- ARC PLACEHOLDER -->
       <!-- ✅ TRENDY PLANT INNER DIV (INSIDE HERO) -->
       <div
         class="relative w-full mt-32 px-8 text-white pb-16 flex flex-col justify-center justify-center items-center"
@@ -371,11 +376,8 @@
 
         <!-- ✅ GLASS CARD -->
         <!-- First card-->
-        <!-- <div
-          class="relative mx-auto max-w-[1320px] w-full mb-16 backdrop-blur-xl bg-white/10 border border-white/20 rounded-[100px] px-12 py-16 flex flex-col md:flex-row items-center"
-        > -->
         <div
-          class="relative mx-auto max-w-[1320px] w-full backdrop-blur-lg bg-white/1 border border-white/20 rounded-[100px] py-4 my-10 flex flex-col md:flex-row items-center"
+          class="relative mx-auto max-w-[auto] w-full backdrop-blur-lg bg-white/1 border border-white/20 rounded-[100px] py-4 my-10 flex flex-col md:flex-row items-center"
         >
           <!-- ✅ LEFT IMAGE -->
           <div class="w-full md:w-[50%] flex justify-center mt-[-10%]">
@@ -421,7 +423,7 @@
 
         <!---second card-->
         <div
-          class="relative mx-auto max-w-[1320px] w-full backdrop-blur-lg bg-white/1 border border-white/20 rounded-[100px] py-4 my-10 mt-20 flex flex-col md:flex-row items-center"
+          class="relative mx-auto max-w-[auto] w-full backdrop-blur-lg bg-white/1 border border-white/20 rounded-[100px] py-4 my-10 mt-20 flex flex-col md:flex-row items-center"
         >
           <!-- ✅ LEFT CONTENT (NOW FIRST) -->
           <div class="w-[60%] ml-6 px-16 py-16">
@@ -470,7 +472,7 @@
     <!---- Our top selling ------>
 
     <div
-      class="relative w-full bg-[#1b2316] py-28 px-8 text-white bg-black overflow-hidden"
+      class="relative w-full bg-[#1b2316] py-28 px-8 text-white overflow-hidden"
     >
       <!-- ✅ Animated Heading -->
       <div class="w-full flex justify-center mb-28">
@@ -502,13 +504,12 @@
 
       <!-- ✅ Cards Grid -->
       <div
-        class="mx-auto max-w-[1320px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        class="mx-auto max-w-[auto] px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
       >
         <!-- ================= CARD 1 ================= -->
         <div
           class="curved-top relative rounded-[40px] mb-12 backdrop-blur-xl bg-white/10 border border-white/15 pt-20 pb-6 px-8 flex flex-col"
         >
-          <!-- class="relative rounded-[40px] mb-12 backdrop-blur-xl bg-white/10 border border-white/15 pt-20 pb-6 px-8 flex flex-col" -->
           <img
             src="./images/secondPhoto.png"
             class="h-[320px] w-[320px] object-contain mt-[-50%] self-center justify-self-center"
@@ -672,7 +673,7 @@
 
     <!-- ================= CUSTOMER REVIEW ================= -->
     <div
-      class="relative w-full bg-[#1b2316] py-16 px-8 text-white bg-black overflow-hidden"
+      class="relative w-full bg-[#1b2316] py-16 px-8 text-white overflow-hidden"
     >
       <!-- ✅ Animated Heading -->
       <div class="w-full flex justify-center mb-20">
@@ -702,7 +703,7 @@
 
       <!-- ✅ REVIEW CARDS GRID -->
       <div
-        class="mx-auto max-w-[1320px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12"
+        class="mx-auto max-w-[auto] px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12"
       >
         <!-- ================= CARD 1 ================= -->
         <div
@@ -779,9 +780,6 @@
 
     <!-- ================= Our Best O2 ================= -->
 
-    <!-- ✅ Our Best O2 Animated Heading -->
-    <!-- ================= OUR BEST O2 HEADING ================= -->
-
     <div class="w-full bg-[#1b2316] flex justify-center pt-[20px]">
       <div class="relative">
         <svg
@@ -815,7 +813,7 @@
 
     <!-- ================= CAROUSEL WRAPPER ================= -->
     <div
-      class="carousel-wrapper relative w-full bg-[#1b2316] py-28 px-8 text-white bg-black overflow-hidden"
+      class="carousel-wrapper relative w-full bg-[#1b2316] py-28 px-8 text-white overflow-hidden"
     >
       <div class="relative mx-auto">
         <!-- ✅ SLIDE TRACK -->
@@ -1007,9 +1005,9 @@
     </div>
 
     <!-- ================= FOOTER ================= -->
-    <footer class="w-full bg-[#202a18] text-white px-2 py-12">
+    <footer class="w-100% bg-[#202a18] text-white px-12 py-12">
       <div
-        class="mx-auto max-w-[1320px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16"
+        class="mx-auto max-w-[auto] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-auto"
       >
         <!-- ================= LEFT BRAND ================= -->
         <div class="flex flex-col gap-6">
@@ -1054,11 +1052,11 @@
           <h3 class="text-lg font-semibold">For Every Update.</h3>
 
           <!-- Input -->
-          <div class="relative w-full max-w-[420px]">
+          <div class="relative w-full max-w-full">
             <input
               type="email"
               placeholder="Enter Email"
-              class="w-full h-[52px] rounded-lg bg-transparent border border-white/60 px-5 pr-[120px] text-sm outline-none placeholder:text-white/70"
+              class="w-full h-[52px] rounded-lg bg-transparent border border-white/60 pr-[120px] text-sm outline-none placeholder:text-white/70"
             />
             <button
               class="absolute right-1 top-1 h-[44px] px-6 rounded-md bg-white text-black text-sm font-semibold"

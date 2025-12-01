@@ -14,7 +14,7 @@ body {
   position: absolute;
   background: #facc15;
   box-shadow: 0 0 10px rgba(250, 204, 21, 0.9);
-  animation: squareRace 3.5s linear infinite; /* ✅ same speed everywhere */
+  animation: squareRace 3.5s linear infinite;
 }
 
 /* TOP START */
@@ -31,7 +31,7 @@ body {
   height: 3px;
   bottom: 0;
   right: -40px;
-  animation-delay: 1.75s; /* exactly opposite side */
+  animation-delay: 1.75s; 
 }
 
 /* ✅ TRUE SQUARE CLOCKWISE PATH */
@@ -99,7 +99,6 @@ body {
   stroke-width: 2;
   stroke-linecap: round;
 
-  /* One visible segment + big gap → repeated → looks like 2 opposite lines */
   stroke-dasharray: 80 294;
   stroke-dashoffset: 0;
   animation: topSellingBorderLoop 4s linear infinite;
@@ -110,7 +109,6 @@ body {
     stroke-dashoffset: 0;
   }
   100% {
-    /* perimeter ≈ 748, this moves the dashes all the way around clockwise */
     stroke-dashoffset: -748;
   }
 }
